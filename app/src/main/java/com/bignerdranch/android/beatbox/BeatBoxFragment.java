@@ -2,6 +2,8 @@ package com.bignerdranch.android.beatbox;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +18,8 @@ public class BeatBoxFragment extends Fragment {
 
     private static final byte SPAN_COUNT = 3;
 
+    private BeatBox mBeatBox;
+
     // static method to get instance of this fragment from other classes (activities)
     public static BeatBoxFragment newInstance() {
 
@@ -25,7 +29,7 @@ public class BeatBoxFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /*
         FragmentBeatBox_Binding - automatically generated file.
         it consist fully hierarchy of views from fragment_beat_box.xml in method getRoot()
@@ -42,6 +46,12 @@ public class BeatBoxFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mBeatBox = new BeatBox(getActivity());
+    }
 
     //routine code comes here
     //using inner class instead creating other instance in package cuz in theory class should be small
@@ -62,7 +72,8 @@ public class BeatBoxFragment extends Fragment {
     private class SoundAdapter extends RecyclerView.Adapter<SoundHolder> {
 
         @Override
-        public SoundHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public @NonNull
+        SoundHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
             //get inflater from context
             LayoutInflater inflater = LayoutInflater.from(getActivity());
@@ -75,7 +86,7 @@ public class BeatBoxFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(SoundHolder holder, int position) {
+        public void onBindViewHolder(@NonNull SoundHolder holder, int position) {
             //todo will be filled soon
         }
 
