@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Button
+        style="@style/list_item_sound_buttons_style"
+        tools:text="Sound name"/>
+</layout>

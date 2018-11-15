@@ -8,7 +8,7 @@ public class BeatBoxActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
 
         //create new instance of BeatBoxFragment and sent it to SingleFragmentActivity as Fragment
-        //where it uses in onCreate by FragmentManager 
-        return BeatBoxFragment.newinstance();
+        //where it uses in onCreate by FragmentManager
+        return BeatBoxFragment.newInstance();
     }
 }

@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!-- style variable for buttons in recycler_view items -->
+    <style name="list_item_sound_buttons_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120dp</item>
+
+        <!--
+        add something else if u wish
+         -->
+    </style>
+
 </resources>
