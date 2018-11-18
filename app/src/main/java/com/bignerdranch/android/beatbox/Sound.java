@@ -6,6 +6,8 @@ public class Sound {
     private String mAssetPath;
     //filename only variable
     private String mName;
+    //ID of sound (for SoundPool)
+    private Integer mSoundId;
 
     public Sound(String assetPath) {
         mAssetPath = assetPath;
@@ -26,4 +28,11 @@ public class Sound {
         return mName;
     }
 
+    public Integer getSoundId() {
+        return mSoundId;
+    }
+
+    public void setSoundId(Integer soundId) {
+        mSoundId = soundId;
+    }
 }
