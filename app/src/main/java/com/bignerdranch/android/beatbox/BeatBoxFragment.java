@@ -67,6 +67,13 @@ public class BeatBoxFragment extends Fragment {
         private SoundHolder(ListItemSoundBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
+            mBinding.setViewModel(new SoundViewModel(mBeatBox));
+        }
+
+        public void bind(Sound sound) {
+            mBinding.getViewModel().setSound(sound);
+            //exec pending bindings - for faster drawing (maybe like .invalidate() )
+            mBinding.executePendingBindings();
         }
     }
 
@@ -99,7 +106,11 @@ public class BeatBoxFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull SoundHolder holder, int position) {
-            //todo will be filled soon
+            //Sound sound = mSounds.get(position);
+            //holder.bind(sound);
+
+            //try this way, maybe should test both ways for better performance
+            holder.bind(mSounds.get(position));
         }
 
         @Override

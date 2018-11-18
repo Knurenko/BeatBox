@@ -2,9 +2,19 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- here comes some DATA BINDING B) B) B) -->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bignerdranch.android.beatbox.SoundViewModel"/>
+    </data>
+    <!-- rebuild project after this,
+     maybe close & reopen android studio to get access to get&set_viewModel methods -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:text="@{viewModel.title}"
 
-        tools:text="Sound name"/>
+        tools:text="Sound name"/> <!--test. getTitle or title -->
 </layout>
