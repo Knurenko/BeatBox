@@ -1,5 +1,6 @@
 package com.bignerdranch.android.beatbox;
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import com.bignerdranch.android.beatbox.databinding.FragmentBeatBoxBinding;
 import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding;
@@ -30,6 +32,7 @@ public class BeatBoxFragment extends Fragment {
     }
 
 
+    @SuppressLint("StringFormatInvalid")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /*
@@ -38,8 +41,28 @@ public class BeatBoxFragment extends Fragment {
 
         it means that var binding gives us access to views of XML file without findItemById(...)
          */
-        FragmentBeatBoxBinding binding = DataBindingUtil
+        final FragmentBeatBoxBinding binding = DataBindingUtil
                 .inflate(inflater, R.layout.fragment_beat_box, container, false);
+
+        binding.playbackSpeedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                binding.playbackSpeedText.setText(getString(R.string.playback_text, progress + 50));
+                mBeatBox.setPlaybackSpeed((float) (progress + 50) / 100);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        binding.playbackSpeedText.setText(getString(R.string.playback_text, 100));
 
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), SPAN_COUNT));
         //now we can get list of sounds from mBeatBox class to adapter

@@ -33,6 +33,9 @@ public class BeatBox {
     //soundPool instance for storing and processing a large number of sounds
     private SoundPool mSoundPool;
 
+    //float playback speed variable for challenge
+    float mPlaybackSpeed = 1.0f;
+
     /*  initialize AssetManager in class constructor (that's why we need Context exemplar)
         there is no matter which Context_Object will be called (ApplicationContext, Activity, etc)
         AssetManager object, received by their .getAssets() method will be the same. */
@@ -93,7 +96,11 @@ public class BeatBox {
             return;
         }
         //YEAH c'mon play dat shit DJ!
-        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, mPlaybackSpeed);
+    }
+
+    public void setPlaybackSpeed(float speed) {
+        mPlaybackSpeed = speed;
     }
 
     public void release() {
