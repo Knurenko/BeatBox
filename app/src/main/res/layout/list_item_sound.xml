@@ -15,6 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:text="@{viewModel.title}"
+        android:onClick="@{() -> viewModel.onButtonClicked()}"
 
-        tools:text="Sound name"/> <!--test. getTitle or title -->
+        tools:text="Sound name"/>
+    <!--test. getTitle or title
+              UPD: both working good
+              UPD2: bind button click method
+         -->
 </layout>

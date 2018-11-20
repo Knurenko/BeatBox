@@ -95,4 +95,9 @@ public class BeatBox {
         //YEAH c'mon play dat shit DJ!
         mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
     }
+
+    public void release() {
+        //destroy soundPool instance to release memory
+        mSoundPool.release();
+    }
 }
